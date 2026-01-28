@@ -1,0 +1,35 @@
+(VUE-CONTENEDOR)
+
+1. Al crear el dockerfile se tendran los siguientes apartados:
+    1. Creación del entorno de node.
+    2. Definir Id de la maquina fisica
+    3. Instalación de vue
+    4. Exponer el puerto virtual 5173 
+
+2. La creación del docker-compose contendra:
+    1. Nombre del contenedor
+    2. El id de la maquina fisica para evitar problemas de permisos
+    3. Puerto fisico y virtual que usara el contenedor
+    4. La red donde estara el contenedor
+    5. El volumen que contendra los archivos del proyecto
+
+3. Crear el contenedor usando el comando: 
+    docker compose build
+
+4. Si es la primera vez creando el proyecto y no existe la carpeta vueClient seguir los siguientes pasos, de lo contrario pasar al punto 5:
+    1. Crear el proyecto de vue:
+        docker compose run --rm -u root my_vue_container npm create vue@latest .
+        
+    2. Otorgar los permisos a la carpeta vueClient para evitar problemas de ejecución
+        sudo chown -R 1000:1000 ./vueClient
+
+    3. Descargar las dependencias y generar la carpeta node_modules
+        docker compose run --rm my_vue_container npm install
+
+    4. Levantar el contenedor
+        docker compose up -d
+
+5. Ejecutar el comando para instalar las dependencias que utiliza laravel
+    Retomar el punto 3.1 al 4.1
+
+6. Personalizar el proyecto vue

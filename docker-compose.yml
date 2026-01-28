@@ -1,0 +1,25 @@
+services:
+  my_vue_container:
+    build:
+      context: .
+      dockerfile: dockerfile
+      args:
+        UID: 1000
+        GID: 1000
+    image: front-vue
+    container_name: my_vue_container
+    ports:
+      - "4000:5173"
+    networks:
+      - my_net
+    volumes:
+      - ./vueClient:/app
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true # Ayuda a detectar cambios en algunos sistemas de archivos
+
+# Utilizo una red externa creada previamente, 
+# se puede crear una si no se tiene
+networks:
+  my_net:
+    external: true
