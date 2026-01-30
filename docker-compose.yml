@@ -19,7 +19,7 @@ services:
       - WATCHPACK_POLLING=true # Ayuda a detectar cambios en algunos sistemas de archivos
 
 # Utilizo una red externa creada previamente, 
-# se puede crear una si no se tiene
+# para crearla usar: docker network create my_net
 networks:
   my_net:
     external: true

@@ -33,3 +33,6 @@
     Retomar el punto 3.1 al 4.1
 
 6. Personalizar el proyecto vue
+
+Ejemplo de instalación de paquetes:
+    docker exec -it my_vue_container npm install axios.
